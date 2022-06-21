@@ -4,14 +4,13 @@ const app = express();
 const PORT = process.env.PORT || 3000
 const tasks = require('./routes/task');
 require('dotenv').config()
-
+const notFound = require('./middleware/not-found')
 // middleware 
+app.use(express.static('./public'))
 app.use(express.json());
 
+
 // routes
-app.get('/hello', (req, res) => {
-    res.send('Task Manager Live')
-})
 
 app.use('/api/v1/tasks', tasks)
 
